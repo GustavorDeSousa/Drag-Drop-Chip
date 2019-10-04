@@ -1,5 +1,5 @@
 //
-//  TesteCollectionViewCell.swift
+//  ExchangeCollectionViewCell.swift
 //  CollectionViews
 //
 //  Created by Gustavo De Sousa on 29/09/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TesteCollectionViewCell: UICollectionViewCell {
+class ExchangeCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var lbTitle: UILabel!
     override func awakeFromNib() {
