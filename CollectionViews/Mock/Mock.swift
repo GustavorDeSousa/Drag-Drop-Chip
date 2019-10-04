@@ -25,4 +25,49 @@ struct Mock {
         "Opções",
         "Futuros"
     ]
+    
+    static var indexScreenExchange = [
+        "Listas Pessoais",
+        "Indicadores de Mercado",
+        "Classes",
+        "Popular",
+        "Outros"
+    ]
+    
+    static var indicadorMercado = [
+        "Maiores Altas",
+        "Maiores Baixas",
+        "Top Volume",
+        "Delta Volume",
+        "Novidades"
+    ]
+    
+    static var classes = [
+        "ETFs",
+        "Fundos Imobiliários",
+        "Opções",
+        "Índices",
+        "Setores"
+    ]
+    
+    static var popular = [
+        "BDR",
+        "Bens Industriais",
+        "Contrução e Transporte",
+        "Consumo Cíclico",
+        "Consumo Não Cíclico",
+        "Financeiro e Outros",
+        "Materiais Vásicos",
+        "Outros",
+        "Petroleo, Gás e Biocombustíveis",
+        "Tecnologia da Informação",
+        "Telecomunicações",
+        "Utilidade Pública"
+    ]
+    
+    static var outros = [
+        "Atividades",
+        "Indicadores Fundamentalistas",
+        "Índices Macroeconômicos"
+    ]
 }
