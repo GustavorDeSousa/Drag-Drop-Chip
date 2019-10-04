@@ -16,8 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gf1-Ua-dzb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="318"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="1IC-aW-KcB"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="EgS-kz-az7">
                                     <size key="itemSize" width="70" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -33,7 +35,6 @@
                             <constraint firstItem="Gf1-Ua-dzb" firstAttribute="top" secondItem="8bn-D2-ccz" secondAttribute="top" id="Bt3-wT-rfY"/>
                             <constraint firstItem="Gf1-Ua-dzb" firstAttribute="leading" secondItem="8bn-D2-ccz" secondAttribute="leading" id="XIq-BV-kpV"/>
                             <constraint firstItem="Gf1-Ua-dzb" firstAttribute="trailing" secondItem="8bn-D2-ccz" secondAttribute="trailing" id="YE2-XH-bqT"/>
-                            <constraint firstItem="8bn-D2-ccz" firstAttribute="bottom" secondItem="Gf1-Ua-dzb" secondAttribute="bottom" constant="500" id="oFb-2u-Ob8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8bn-D2-ccz"/>
                     </view>
