@@ -12,6 +12,7 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
 
     @IBOutlet weak var collectionExchange: UICollectionView!
     @IBOutlet weak var lbTitleChip: UILabel!
+    @IBOutlet weak var tbCellHeight: NSLayoutConstraint!
     
     var indexLine : Int?
 //    var columnLayout = CollectionViewHorizontal()
@@ -113,35 +114,30 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         if self.tag == 0 {
             if Mock.arrPessoal.count != 0 {
                 cell.lbTitle.text = Mock.arrPessoal[indexPath.row]
-                cell.backgroundColor = .none
             } else {
                 return UICollectionViewCell()
             }
         } else if self.tag == 1 {
             if Mock.indicadorMercado.count != 0 {
                 cell.lbTitle.text = Mock.indicadorMercado[indexPath.row]
-                cell.backgroundColor = .none
             } else {
                 return UICollectionViewCell()
             }
         } else if self.tag == 2 {
             if Mock.classes.count != 0 {
                 cell.lbTitle.text = Mock.classes[indexPath.row]
-                cell.backgroundColor = .none
             } else {
                 return UICollectionViewCell()
             }
         } else if self.tag == 3 {
             if Mock.popular.count != 0 {
                 cell.lbTitle.text = Mock.popular[indexPath.row]
-                cell.backgroundColor = .none
             } else {
                 return UICollectionViewCell()
             }
         } else {
             if Mock.outros.count != 0 {
                 cell.lbTitle.text = Mock.outros[indexPath.row]
-                cell.backgroundColor = .none
             } else {
                 return UICollectionViewCell()
             }

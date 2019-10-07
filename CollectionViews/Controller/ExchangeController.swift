@@ -31,14 +31,24 @@ class ExchangeController: UIViewController, UITableViewDelegate, UITableViewData
         cell.indexLine = indexPath.row
         if cell.indexLine == indexPath.row && indexPath.row == 0 {
             cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.arrPessoal)
+            cell.tbCellHeight.constant = 3 * SizeChip.chipHeight
+            
         } else if cell.indexLine == indexPath.row && indexPath.row == 1 {
             cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.indicadorMercado)
+            cell.tbCellHeight.constant = 3 * SizeChip.chipHeight
         } else if cell.indexLine == indexPath.row && indexPath.row == 2 {
             cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2, arr: Mock.classes)
+            cell.tbCellHeight.constant = 2 * SizeChip.chipHeight
+
+            
         } else if cell.indexLine == indexPath.row && indexPath.row == 3 {
             cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.popular)
+            cell.tbCellHeight.constant = 3 * SizeChip.chipHeight
+
+
         } else {
             cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2, arr: Mock.outros)
+            cell.tbCellHeight.constant = 2 * SizeChip.chipHeight
         }
 
         cell.tag = indexPath.row
@@ -47,16 +57,17 @@ class ExchangeController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 3 * SizeChip.chipHeight
-        } else if indexPath.row == 1 {
-            return 3 * SizeChip.chipHeight
-        } else if indexPath.row == 2 {
-            return 2 * SizeChip.chipHeight
-        } else  if indexPath.row == 3 {
-            return 3 * SizeChip.chipHeight
-        } else {
-            return 2 * SizeChip.chipHeight
-        }
+//        if indexPath.row == 0 {
+//            return 3 * SizeChip.chipHeight
+//        } else if indexPath.row == 1 {
+//            return 3 * SizeChip.chipHeight
+//        } else if indexPath.row == 2 {
+//            return 2 * SizeChip.chipHeight
+//        } else  if indexPath.row == 3 {
+//            return 3 * SizeChip.chipHeight
+//        } else {
+//            return 2 * SizeChip.chipHeight
+//        }
+        return UITableView.automaticDimension
     }
 }
