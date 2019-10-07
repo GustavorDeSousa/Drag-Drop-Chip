@@ -13,9 +13,8 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
     @IBOutlet weak var collectionExchange: UICollectionView!
     @IBOutlet weak var lbTitleChip: UILabel!
     
-    
     var indexLine : Int?
-    let columnLayout = CollectionViewHorizontal()
+//    var columnLayout = CollectionViewHorizontal()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,9 +29,6 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         
         self.collectionExchange.dropDelegate = self
         
-        
-        columnLayout.scrollDirection = .horizontal
-        self.collectionExchange.collectionViewLayout = columnLayout
         self.collectionExchange.contentInsetAdjustmentBehavior = .always
         
         self.collectionExchange.register(UINib(nibName: "ExchangeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ExchangeCollectionViewCell")
@@ -64,22 +60,72 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
 
     // MARK: - Collection View
      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         return CGSize(width: GenericFunctions.calculateCellSize(word: Mock.arrPessoal[indexPath.row]), height: 40)
+        if self.tag == 0 {
+            return CGSize(width: GenericFunctions.calculateCellSize(word: Mock.arrPessoal[indexPath.row]), height: 40)
+        } else if self.tag == 1 {
+            return CGSize(width: GenericFunctions.calculateCellSize(word: Mock.indicadorMercado[indexPath.row]), height: 40)
+        } else if self.tag == 2 {
+            return CGSize(width: GenericFunctions.calculateCellSize(word: Mock.classes[indexPath.row]), height: 40)
+        } else if self.tag == 3 {
+            return CGSize(width: GenericFunctions.calculateCellSize(word: Mock.popular[indexPath.row]), height: 40)
+        }  else {
+            return CGSize(width: GenericFunctions.calculateCellSize(word: Mock.outros[indexPath.row]), height: 40)
+        }
      }
      
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return Mock.arrPessoal.count
+        if self.tag == 0 {
+            return Mock.arrPessoal.count
+        } else if self.tag == 1 {
+            return Mock.indicadorMercado.count
+        } else if self.tag == 2 {
+            return Mock.classes.count
+        } else if self.tag == 3 {
+            return Mock.popular.count
+        } else {
+            return Mock.outros.count
+        }
      }
      
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExchangeCollectionViewCell", for: indexPath) as! ExchangeCollectionViewCell
              
-         if Mock.arrPessoal.count != 0 {
-             cell.lbTitle.text = Mock.arrPessoal[indexPath.row]
-             cell.backgroundColor = .none
-         } else {
-             return UICollectionViewCell()
-         }
+        if self.tag == 0 {
+            if Mock.arrPessoal.count != 0 {
+                cell.lbTitle.text = Mock.arrPessoal[indexPath.row]
+                cell.backgroundColor = .none
+            } else {
+                return UICollectionViewCell()
+            }
+        } else if self.tag == 1 {
+            if Mock.indicadorMercado.count != 0 {
+                cell.lbTitle.text = Mock.indicadorMercado[indexPath.row]
+                cell.backgroundColor = .none
+            } else {
+                return UICollectionViewCell()
+            }
+        } else if self.tag == 2 {
+            if Mock.classes.count != 0 {
+                cell.lbTitle.text = Mock.classes[indexPath.row]
+                cell.backgroundColor = .none
+            } else {
+                return UICollectionViewCell()
+            }
+        } else if self.tag == 3 {
+            if Mock.popular.count != 0 {
+                cell.lbTitle.text = Mock.popular[indexPath.row]
+                cell.backgroundColor = .none
+            } else {
+                return UICollectionViewCell()
+            }
+        } else {
+            if Mock.outros.count != 0 {
+                cell.lbTitle.text = Mock.outros[indexPath.row]
+                cell.backgroundColor = .none
+            } else {
+                return UICollectionViewCell()
+            }
+        }
          
          if let gestures = cell.gestureRecognizers {
              if gestures.firstIndex(of: UILongPressGestureRecognizer()) == nil {

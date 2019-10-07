@@ -29,10 +29,35 @@ class ExchangeController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableExchange.dequeueReusableCell(withIdentifier: "ExchangeTableViewCell") as! ExchangeTableViewCell
         cell.lbTitleChip.text = Mock.indexScreenExchange[indexPath.row]
         cell.indexLine = indexPath.row
+        if cell.indexLine == indexPath.row && indexPath.row == 0 {
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3)
+        } else if cell.indexLine == indexPath.row && indexPath.row == 1 {
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3)
+        } else if cell.indexLine == indexPath.row && indexPath.row == 2 {
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2)
+        } else if cell.indexLine == indexPath.row && indexPath.row == 3 {
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3)
+        } else {
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2)
+        }
+
+        cell.tag = indexPath.row
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CollectionViewHorizontal.lines * 75
+        let heightFix: CGFloat = 60
+        if indexPath.row == 0 {
+            return 3 * heightFix
+        } else if indexPath.row == 1 {
+            return 3 * heightFix
+        } else if indexPath.row == 2 {
+            return 2 * heightFix
+        } else  if indexPath.row == 3 {
+            return 3 * heightFix
+        } else {
+            return 2 * heightFix
+        }
     }
 }

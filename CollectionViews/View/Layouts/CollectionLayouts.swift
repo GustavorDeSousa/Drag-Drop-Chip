@@ -11,13 +11,27 @@ import UIKit
 // MARK: - LAYOUT COLLECTION
 class CollectionViewHorizontal: UICollectionViewFlowLayout {
     //Quantity line in collectionView
-    static let lines: CGFloat = 3
+    var lines: CGFloat = 0
     //More space in collectionView
     let mult: CGFloat = 1.5
+  
+    override init() {
+        super.init()
+    }
+    
+    init(qtyLines : CGFloat, direction : UICollectionView.ScrollDirection = .horizontal) {
+        super.init()
+        self.lines = qtyLines
+        self.scrollDirection = direction
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override var collectionViewContentSize: CGSize {
         let defaultSize = super.collectionViewContentSize
-        let characterInLine = GenericFunctions.arrSize(lines: Int(CollectionViewHorizontal.lines))
+        let characterInLine = GenericFunctions.arrSize(lines: Int(self.lines))
         return CGSize(width: CGFloat(characterInLine) * mult, height: defaultSize.height)
     }
 
@@ -33,9 +47,9 @@ class CollectionViewHorizontal: UICollectionViewFlowLayout {
             chip.frame.origin.x = leftMargin
 
             leftMargin += chip.frame.width
-            if leftMargin + chip.frame.width >= CGFloat(GenericFunctions.arrSize(lines: Int(CollectionViewHorizontal.lines))) * mult  {
+            if leftMargin + chip.frame.width >= CGFloat(GenericFunctions.arrSize(lines: Int(self.lines))) {
                 count += 1
-                if count <= Int(CollectionViewHorizontal.lines) {
+                if count <= Int(self.lines) {
                     posY += chip.frame.height
                     leftMargin = sectionInset.left
                 }
