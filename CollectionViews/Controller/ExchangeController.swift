@@ -30,15 +30,15 @@ class ExchangeController: UIViewController, UITableViewDelegate, UITableViewData
         cell.lbTitleChip.text = Mock.indexScreenExchange[indexPath.row]
         cell.indexLine = indexPath.row
         if cell.indexLine == indexPath.row && indexPath.row == 0 {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3)
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.arrPessoal)
         } else if cell.indexLine == indexPath.row && indexPath.row == 1 {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3)
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.indicadorMercado)
         } else if cell.indexLine == indexPath.row && indexPath.row == 2 {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2)
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2, arr: Mock.classes)
         } else if cell.indexLine == indexPath.row && indexPath.row == 3 {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3)
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.popular)
         } else {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2)
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2, arr: Mock.outros)
         }
 
         cell.tag = indexPath.row

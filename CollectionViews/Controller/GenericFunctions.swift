@@ -18,12 +18,27 @@ struct GenericFunctions {
     }
     
     //Retorna o tamanho de todas as string e dividi para a quantidade de linhas informadas
-    static func arrSize(lines: Int) -> Double {
+    static func arrSize(lines: Int, arr: [String]) -> Double {
         var size = 0.0
-        for i in Mock.arrPessoal {
+        for i in arr {
             size += GenericFunctions.calculateCellSize(word: i)
         }
         size = size / Double(lines)
+        return size
+    }
+}
+
+
+//TROCAR PARA EXTENSION
+extension Array {
+    func calculateStringWordCount(for lines: Int) -> Int {
+        var size = 0
+        for i in self {
+            if let i = i as? String {
+                size += Int(GenericFunctions.calculateCellSize(word: i))
+            }
+        }
+        size = size / lines
         return size
     }
 }
