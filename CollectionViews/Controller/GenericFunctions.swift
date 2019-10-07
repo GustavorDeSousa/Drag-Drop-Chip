@@ -19,12 +19,74 @@ struct GenericFunctions {
     
     //Retorna o tamanho de todas as string e dividi para a quantidade de linhas informadas
     static func arrSize(lines: Int, arr: [String]) -> Double {
-        var size = 0.0
+        let elementInLine = (arr.count/lines) - 1
+        var arrModificated : [String] = []
+        
+        var typeLine = "A"
+        var arrA : [String] = []
+        var sizeA = 0.0
+
+        var arrB : [String] = []
+        var sizeB = 0.0
+
+        var arrC : [String] = []
+        var sizeC = 0.0
+        
         for i in arr {
-            size += GenericFunctions.calculateCellSize(word: i)
+            arrModificated.append(i)
         }
-        size = size / Double(lines)
-        return size
+
+        for _ in 0 ..< lines {
+            for (index, element) in arrModificated.enumerated() {
+                if typeLine == "A" {
+                    if index <= elementInLine {
+                        arrA.append(element)
+                        arrModificated.remove(at: index)
+                        if index == elementInLine {
+                            typeLine = "B"
+                        }
+                    }
+                } else if typeLine == "B" {
+                    if index <= elementInLine {
+                        arrB.append(element)
+                        arrModificated.remove(at: index)
+                        if index == elementInLine {
+                            typeLine = "C"
+                        }
+                    }
+                } else {
+                    if index <= elementInLine {
+                        arrC.append(element)
+                    }
+                }
+            }
+        }
+
+        for i in arrA {
+            sizeA += GenericFunctions.calculateCellSize(word: i)
+        }
+        
+        for i in arrB {
+            sizeB += GenericFunctions.calculateCellSize(word: i)
+        }
+        
+        for i in arrC {
+            sizeC += GenericFunctions.calculateCellSize(word: i)
+        }
+        
+        if sizeA >= sizeB {
+            if sizeA >= sizeC {
+                return sizeA
+            } else {
+                return sizeC
+            }
+        } else {
+            if sizeB >= sizeC{
+                return sizeB
+            } else {
+                return sizeC
+            }
+        }
     }
 }
 

@@ -47,17 +47,16 @@ class ExchangeController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let heightFix: CGFloat = 60
         if indexPath.row == 0 {
-            return 4 * heightFix
+            return 3 * SizeChip.chipHeight
         } else if indexPath.row == 1 {
-            return 3 * heightFix
+            return 3 * SizeChip.chipHeight
         } else if indexPath.row == 2 {
-            return 2 * heightFix
+            return 2 * SizeChip.chipHeight
         } else  if indexPath.row == 3 {
-            return 3 * heightFix
+            return 3 * SizeChip.chipHeight
         } else {
-            return 2 * heightFix
+            return 2 * SizeChip.chipHeight
         }
     }
 }

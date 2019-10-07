@@ -13,8 +13,6 @@ class CollectionViewHorizontal: UICollectionViewFlowLayout {
     //Quantity line in collectionView
     var lines: CGFloat = 0
     var arr: [String] = []
-    //More space in collectionView
-    let mult: CGFloat = 1.5
   
     override init() {
         super.init()
@@ -30,26 +28,19 @@ class CollectionViewHorizontal: UICollectionViewFlowLayout {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override var collectionViewContentSize: CGSize {
-        let defaultSize = super.collectionViewContentSize
-        let characterInLine = GenericFunctions.arrSize(lines: Int(self.lines), arr: arr)
-        return CGSize(width: CGFloat(characterInLine) * mult, height: defaultSize.height)
-    }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let attributes = super.layoutAttributesForElements(in: rect)
         self.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         var leftMargin = sectionInset.left
         var posY = sectionInset.top
-        print(lines)
         
         attributes?.forEach({ (chip) in
             chip.frame.origin.y = posY
             chip.frame.origin.x = leftMargin
 
             leftMargin += chip.frame.width
-            if leftMargin + chip.frame.width >= CGFloat(GenericFunctions.arrSize(lines: Int(self.lines), arr: arr)) {
+            if leftMargin >= CGFloat(GenericFunctions.arrSize(lines: Int(self.lines), arr: arr)) {
                 posY += chip.frame.height
                 leftMargin = sectionInset.left
             }

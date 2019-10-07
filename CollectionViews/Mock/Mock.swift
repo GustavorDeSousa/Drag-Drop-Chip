@@ -71,3 +71,7 @@ struct Mock {
         "3.Índices Macroeconômicos"
     ]
 }
+
+struct SizeChip {
+    static var chipHeight: CGFloat = 70
+}

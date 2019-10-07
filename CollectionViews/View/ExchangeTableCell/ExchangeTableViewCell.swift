@@ -167,38 +167,49 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
          return cell
      }
      
-     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-         let item = Mock.self.arrPessoal[indexPath.row]
-         let itemProvider = NSItemProvider(object: item as NSString)
-         let dragItem = UIDragItem(itemProvider: itemProvider)
-         dragItem.localObject = item
-         return [dragItem]
-     }
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let item = Mock.self.arrPessoal[indexPath.row]
+        let itemProvider = NSItemProvider(object: item as NSString)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = item
+        return [dragItem]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        return true
+    }
      
-     func collectionView(_ collectionView: UICollectionView,
-                         canHandle session: UIDropSession) -> Bool {
-       return true
-     }
-     
-     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-         guard let destinationIndexPath = coordinator.destinationIndexPath else { return }
-
-         coordinator.items.forEach { dropItem in
-           guard let sourceIndexPath = dropItem.sourceIndexPath else { return }
-           collectionView.performBatchUpdates({
-             let image = Mock.arrPessoal[sourceIndexPath.row]
-             removeIndex(at: sourceIndexPath)
-             insertIndex(array: image, at: destinationIndexPath)
-             collectionView.deleteItems(at: [sourceIndexPath])
-             collectionView.insertItems(at: [destinationIndexPath])
-           }, completion: { _ in
-             coordinator.drop(dropItem.dragItem, toItemAt: destinationIndexPath)
-           })
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        guard let destinationIndexPath = coordinator.destinationIndexPath else { return }
+        var arr: [String] = []
+        if self.tag == 0 {
+            arr = Mock.arrPessoal
+        } else if self.tag == 1 {
+            arr = Mock.indicadorMercado
+        } else if self.tag == 2 {
+            arr = Mock.classes
+        } else if self.tag == 3 {
+            arr = Mock.popular
+        } else {
+            arr = Mock.outros
         }
-     }
-     
-     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession,
-       withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-       return UICollectionViewDropProposal( operation: .move, intent: .insertAtDestinationIndexPath)
-     }
+        
+        coordinator.items.forEach { dropItem in
+            guard let sourceIndexPath = dropItem.sourceIndexPath else { return }
+            collectionView.performBatchUpdates({
+                let chip = arr[sourceIndexPath.row]
+                removeIndex(at: sourceIndexPath)
+                insertIndex(array: chip, at: destinationIndexPath)
+                collectionView.deleteItems(at: [sourceIndexPath])
+                collectionView.insertItems(at: [destinationIndexPath])
+            }, completion: { _ in
+                coordinator.drop(dropItem.dragItem, toItemAt: destinationIndexPath)
+            })
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession,
+                        withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        return UICollectionViewDropProposal( operation: .move, intent: .insertAtDestinationIndexPath)
+    }
 }
