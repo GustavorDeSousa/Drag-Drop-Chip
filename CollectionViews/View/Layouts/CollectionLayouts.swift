@@ -40,7 +40,6 @@ class CollectionViewHorizontal: UICollectionViewFlowLayout {
         self.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         var leftMargin = sectionInset.left
         var posY = sectionInset.top
-        var count = 0
         
         attributes?.forEach({ (chip) in
             chip.frame.origin.y = posY
@@ -48,11 +47,8 @@ class CollectionViewHorizontal: UICollectionViewFlowLayout {
 
             leftMargin += chip.frame.width
             if leftMargin + chip.frame.width >= CGFloat(GenericFunctions.arrSize(lines: Int(self.lines))) {
-                count += 1
-                if count <= Int(self.lines) {
-                    posY += chip.frame.height
-                    leftMargin = sectionInset.left
-                }
+                posY += chip.frame.height
+                leftMargin = sectionInset.left
             }
         })
         return attributes

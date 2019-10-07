@@ -50,12 +50,32 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
     // MARK: - FUNCS FACILITY YOUR LIFE
     //Função para remover o index da collection
     func removeIndex(at indexPath: IndexPath) {
-        Mock.arrPessoal.remove(at: indexPath.row)
+        if self.tag == 0 {
+            Mock.arrPessoal.remove(at: indexPath.row)
+        } else if self.tag == 1 {
+            Mock.indicadorMercado.remove(at: indexPath.row)
+        } else if self.tag == 2 {
+            Mock.classes.remove(at: indexPath.row)
+        } else if self.tag == 3 {
+            Mock.popular.remove(at: indexPath.row)
+        } else {
+            Mock.outros.remove(at: indexPath.row)
+        }
     }
       
     //Função para adicionar o index na collection
     func insertIndex(array: String, at indexPath: IndexPath) {
-        Mock.arrPessoal.insert(array, at: indexPath.row)
+        if self.tag == 0 {
+            Mock.arrPessoal.insert(array, at: indexPath.row)
+        } else if self.tag == 1 {
+            Mock.indicadorMercado.insert(array, at: indexPath.row)
+        } else if self.tag == 2 {
+            Mock.classes.insert(array, at: indexPath.row)
+        } else if self.tag == 3 {
+            Mock.popular.insert(array, at: indexPath.row)
+        } else {
+            Mock.outros.insert(array, at: indexPath.row)
+        }
     }
 
     // MARK: - Collection View
@@ -161,15 +181,10 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
      }
      
      func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-         guard let destinationIndexPath = coordinator.destinationIndexPath else {
-           return
-         }
+         guard let destinationIndexPath = coordinator.destinationIndexPath else { return }
 
          coordinator.items.forEach { dropItem in
-           guard let sourceIndexPath = dropItem.sourceIndexPath else {
-             return
-           }
-
+           guard let sourceIndexPath = dropItem.sourceIndexPath else { return }
            collectionView.performBatchUpdates({
              let image = Mock.arrPessoal[sourceIndexPath.row]
              removeIndex(at: sourceIndexPath)
@@ -177,8 +192,7 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
              collectionView.deleteItems(at: [sourceIndexPath])
              collectionView.insertItems(at: [destinationIndexPath])
            }, completion: { _ in
-             coordinator.drop(dropItem.dragItem,
-                               toItemAt: destinationIndexPath)
+             coordinator.drop(dropItem.dragItem, toItemAt: destinationIndexPath)
            })
         }
      }
