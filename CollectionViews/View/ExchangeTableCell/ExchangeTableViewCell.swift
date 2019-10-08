@@ -109,7 +109,7 @@ class ExchangeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
      }
      
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExchangeCollectionViewCell", for: indexPath) as! ExchangeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExchangeCollectionViewCell", for: indexPath) as! ExchangeCollectionViewCell
              
         if self.tag == 0 {
             if Mock.arrPessoal.count != 0 {

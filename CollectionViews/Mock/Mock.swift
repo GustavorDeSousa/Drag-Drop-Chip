@@ -73,5 +73,5 @@ struct Mock {
 }
 
 struct SizeChip {
-    static var chipHeight: CGFloat = 50
+    static var chipHeight: CGFloat = 55
 }
