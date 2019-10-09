@@ -19,72 +19,74 @@ struct GenericFunctions {
     
     //Retorna o tamanho de todas as string e dividi para a quantidade de linhas informadas
     static func arrSize(lines: Int, arr: [String]) -> Double {
-        let elementInLine = (arr.count/lines) - 1
-        var arrModificated : [String] = []
+        //Quantidade de elementos por linha e a linha em que esta inserindo, onde é utilizado para criar os arrays por linha
+        let elementInLine = (arr.count/lines)
+        var indexLine = 0
         
-        var typeLine = "A"
-        var arrA : [String] = []
-        var sizeA = 0.0
+        //Arrays das linhas para verificar o maior tamanho
+        var arrLineOne : [String] = []
+        var sizeLineOne = 0.0
 
-        var arrB : [String] = []
-        var sizeB = 0.0
+        var arrLineTwo : [String] = []
+        var sizeLineTwo = 0.0
 
-        var arrC : [String] = []
-        var sizeC = 0.0
-        
-        for i in arr {
-            arrModificated.append(i)
-        }
+        var arrLineThree : [String] = []
+        var sizeLineThree = 0.0
 
-        for _ in 0 ..< lines {
-            for (index, element) in arrModificated.enumerated() {
-                if typeLine == "A" {
-                    if index <= elementInLine {
-                        arrA.append(element)
-                        arrModificated.remove(at: index)
-                        if index == elementInLine {
-                            typeLine = "B"
-                        }
+        //Percorrendo o array da lista original para conseguir calcular a maior linha
+        for (index, element) in arr.enumerated() {
+            if indexLine == 0 {
+                if index + 1 <= elementInLine {
+                    arrLineOne.append(element)
+                    if index + 1 == elementInLine {
+                        indexLine = 1
                     }
-                } else if typeLine == "B" {
-                    if index <= elementInLine {
-                        arrB.append(element)
-                        arrModificated.remove(at: index)
-                        if index == elementInLine {
-                            typeLine = "C"
-                        }
+                }
+            } else if indexLine == 1 {
+                if index + 1 <= elementInLine * 2{
+                    arrLineTwo.append(element)
+                    if index == elementInLine * 2 {
+                        indexLine = 2
                     }
-                } else {
-                    if index <= elementInLine {
-                        arrC.append(element)
-                    }
+                }
+            } else {
+                if index + 1 <= elementInLine * 3 {
+                    arrLineThree.append(element)
                 }
             }
         }
 
-        for i in arrA {
-            sizeA += GenericFunctions.calculateCellSize(word: i)
+        //Atualiza as variaveis de tamanho de cada linha
+        if arrLineOne != [] {
+            for i in arrLineOne {
+                sizeLineOne += GenericFunctions.calculateCellSize(word: i)
+            }
         }
         
-        for i in arrB {
-            sizeB += GenericFunctions.calculateCellSize(word: i)
+        if arrLineTwo != [] {
+            for i in arrLineTwo {
+                sizeLineTwo += GenericFunctions.calculateCellSize(word: i)
+            }
         }
         
-        for i in arrC {
-            sizeC += GenericFunctions.calculateCellSize(word: i)
+        if arrLineThree != [] {
+            for i in arrLineThree {
+                sizeLineThree += GenericFunctions.calculateCellSize(word: i)
+            }
         }
-        
-        if sizeA >= sizeB {
-            if sizeA >= sizeC {
-                return sizeA
+
+        //Retorna a linha com maior tamanho
+        if sizeLineOne >= sizeLineTwo {
+            if sizeLineOne >= sizeLineThree {
+                return sizeLineOne
             } else {
-                return sizeC
+                return sizeLineThree
             }
         } else {
-            if sizeB >= sizeC{
-                return sizeB
+            if sizeLineTwo >= sizeLineThree{
+                return sizeLineTwo
             } else {
-                return sizeC
+                return sizeLineThree
             }
         }
     }

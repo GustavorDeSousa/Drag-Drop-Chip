@@ -29,6 +29,11 @@ class CollectionViewHorizontal: UICollectionViewFlowLayout {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override var collectionViewContentSize: CGSize {
+        let characterInLine = GenericFunctions.arrSize(lines: Int(self.lines), arr: arr)
+        return CGSize(width: CGFloat(characterInLine) * 1.5, height: lines * SizeChip.chipHeight)
+    }
+    
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let attributes = super.layoutAttributesForElements(in: rect)
         self.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
