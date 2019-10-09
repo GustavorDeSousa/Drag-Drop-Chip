@@ -14,10 +14,8 @@ class ExchangeCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = .black
-        self.layer.cornerRadius = lbTitle.frame.height / 4
+        self.layer.cornerRadius = lbTitle.frame.height / 2
         lbTitle.layer.cornerRadius = lbTitle.frame.height / 4
         lbTitle.clipsToBounds = true
     }
-
 }

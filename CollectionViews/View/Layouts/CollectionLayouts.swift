@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct SizeChip {
+    static var chipHeight: CGFloat = 55
+}
+
 // MARK: - LAYOUT COLLECTION
 class CollectionViewHorizontal: UICollectionViewFlowLayout {
     //Quantity line in collectionView
@@ -31,7 +35,7 @@ class CollectionViewHorizontal: UICollectionViewFlowLayout {
 
     override var collectionViewContentSize: CGSize {
         let characterInLine = GenericFunctions.arrSize(lines: Int(self.lines), arr: arr)
-        return CGSize(width: CGFloat(characterInLine) * 1.5, height: lines * SizeChip.chipHeight)
+        return CGSize(width: CGFloat(characterInLine) + (lines * 60), height: lines * SizeChip.chipHeight)
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
