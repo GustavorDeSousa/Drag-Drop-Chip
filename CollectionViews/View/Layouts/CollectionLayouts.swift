@@ -12,6 +12,12 @@ struct SizeChip {
     static var chipHeight: CGFloat = 55
 }
 
+struct CollectionLine {
+    static var one   : CGFloat = 1
+    static var two   : CGFloat = 2
+    static var three : CGFloat = 3
+}
+
 // MARK: - LAYOUT COLLECTION
 class CollectionViewHorizontal: UICollectionViewFlowLayout {
     //Quantity line in collectionView

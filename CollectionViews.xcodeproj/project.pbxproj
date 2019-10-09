@@ -136,12 +136,12 @@
 		A11525DA234114240063E101 /* CollectionViews */ = {
 			isa = PBXGroup;
 			children = (
+				A103155C2347BF2700C5FEFD /* Config */,
 				A103156B2347D1BB00C5FEFD /* Mock */,
 				A10315592347BEBE00C5FEFD /* Controller */,
 				A10315582347BEAA00C5FEFD /* View */,
 				A11525EC234114250063E101 /* Info.plist */,
 				A11525E4234114240063E101 /* CollectionViews.xcdatamodeld */,
-				A103155C2347BF2700C5FEFD /* Config */,
 			);
 			path = CollectionViews;
 			sourceTree = "<group>";

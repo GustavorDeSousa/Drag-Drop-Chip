@@ -43,14 +43,14 @@ struct GenericFunctions {
                     }
                 }
             } else if indexLine == 1 {
-                if index + 1 <= elementInLine * 2{
+                if index + 1 <= elementInLine * Int(CollectionLine.two) {
                     arrLineTwo.append(element)
                     if index == elementInLine * 2 {
                         indexLine = 2
                     }
                 }
             } else {
-                if index + 1 <= elementInLine * 3 {
+                if index + 1 <= elementInLine * Int(CollectionLine.three) {
                     arrLineThree.append(element)
                 }
             }
@@ -89,20 +89,5 @@ struct GenericFunctions {
                 return sizeLineThree
             }
         }
-    }
-}
-
-
-//TROCAR PARA EXTENSION
-extension Array {
-    func calculateStringWordCount(for lines: Int) -> Int {
-        var size = 0
-        for i in self {
-            if let i = i as? String {
-                size += Int(GenericFunctions.calculateCellSize(word: i))
-            }
-        }
-        size = size / lines
-        return size
     }
 }

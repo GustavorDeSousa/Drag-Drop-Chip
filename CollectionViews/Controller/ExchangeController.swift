@@ -30,20 +30,20 @@ class ExchangeController: UIViewController, UITableViewDelegate, UITableViewData
         cell.lbTitleChip.text = Mock.indexScreenExchange[indexPath.row]
         cell.indexLine = indexPath.row
         if cell.indexLine == indexPath.row && indexPath.row == 0 {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.arrPessoal)
-            cell.tbCellHeight.constant = 3 * SizeChip.chipHeight
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: CollectionLine.three, arr: Mock.arrPessoal)
+            cell.tbCellHeight.constant = CollectionLine.three * SizeChip.chipHeight
         } else if cell.indexLine == indexPath.row && indexPath.row == 1 {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.indicadorMercado)
-            cell.tbCellHeight.constant = 3 * SizeChip.chipHeight
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: CollectionLine.three, arr: Mock.indicadorMercado)
+            cell.tbCellHeight.constant = CollectionLine.three * SizeChip.chipHeight
         } else if cell.indexLine == indexPath.row && indexPath.row == 2 {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2, arr: Mock.classes)
-            cell.tbCellHeight.constant = 2 * SizeChip.chipHeight
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: CollectionLine.two, arr: Mock.classes)
+            cell.tbCellHeight.constant = CollectionLine.two * SizeChip.chipHeight
         } else if cell.indexLine == indexPath.row && indexPath.row == 3 {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 3, arr: Mock.popular)
-            cell.tbCellHeight.constant = 3 * SizeChip.chipHeight
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: CollectionLine.three, arr: Mock.popular)
+            cell.tbCellHeight.constant = CollectionLine.three * SizeChip.chipHeight
         } else {
-            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: 2, arr: Mock.outros)
-            cell.tbCellHeight.constant = 2 * SizeChip.chipHeight
+            cell.collectionExchange.collectionViewLayout = CollectionViewHorizontal(qtyLines: CollectionLine.two, arr: Mock.outros)
+            cell.tbCellHeight.constant = CollectionLine.two * SizeChip.chipHeight
         }
         cell.tag = indexPath.row
 
