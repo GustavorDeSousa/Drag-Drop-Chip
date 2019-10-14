@@ -41,7 +41,13 @@ class CollectionViewHorizontal: UICollectionViewFlowLayout {
 
     override var collectionViewContentSize: CGSize {
         let characterInLine = GenericFunctions.arrSize(lines: Int(self.lines), arr: arr)
-        return CGSize(width: CGFloat(characterInLine) + (lines * 60), height: lines * SizeChip.chipHeight)
+        var teste = 0
+        if GenericFunctions.testeA > GenericFunctions.testeB {
+            teste = Int(GenericFunctions.testeA)
+        } else {
+            teste = Int(GenericFunctions.testeB)
+        }
+        return CGSize(width: CGFloat(characterInLine) + CGFloat(teste), height: lines * SizeChip.chipHeight)
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {

@@ -17,6 +17,9 @@ struct GenericFunctions {
         return Double(stringSize.width + 30.0)
     }
     
+    static var testeA : Double = 0
+    static var testeB : Double = 0
+    
     //Retorna o tamanho de todas as string e dividi para a quantidade de linhas informadas
     static func arrSize(lines: Int, arr: [String]) -> Double {
         //Quantidade de elementos por linha e a linha em que esta inserindo, onde é utilizado para criar os arrays por linha
@@ -45,7 +48,7 @@ struct GenericFunctions {
             } else if indexLine == 1 {
                 if index + 1 <= elementInLine * Int(CollectionLine.two) {
                     arrLineTwo.append(element)
-                    if index == elementInLine * 2 {
+                    if index + 1 == elementInLine * 2 {
                         indexLine = 2
                     }
                 }
@@ -64,14 +67,20 @@ struct GenericFunctions {
         }
         
         if arrLineTwo != [] {
-            for i in arrLineTwo {
-                sizeLineTwo += GenericFunctions.calculateCellSize(word: i)
+            for (index, element) in arrLineTwo.enumerated() {
+                if index == 0 {
+                    testeA = GenericFunctions.calculateCellSize(word: element)
+                }
+                sizeLineTwo += GenericFunctions.calculateCellSize(word: element)
             }
         }
         
         if arrLineThree != [] {
-            for i in arrLineThree {
-                sizeLineThree += GenericFunctions.calculateCellSize(word: i)
+            for (index, element) in arrLineThree.enumerated() {
+                if index == 1 {
+                    testeB = GenericFunctions.calculateCellSize(word: element)
+                }
+                sizeLineThree += GenericFunctions.calculateCellSize(word: element)
             }
         }
 
